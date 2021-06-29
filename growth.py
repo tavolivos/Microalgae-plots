@@ -34,7 +34,7 @@ inter3 = interp1d(x, y3, kind='quadratic')
 y3_smooth = inter3(xnew)
 
 plt.plot(xnew, yc_smooth,label='HM')
-plt.scatter(x, yc,)
+plt.scatter(x, yc)
 plt.plot(xnew, y1_smooth, label='10 mL/L')
 plt.scatter(x,y1)
 plt.plot(xnew, y2_smooth, label='20 mL/L')
