@@ -1,13 +1,16 @@
+###################################
+#  By: Gustavo E. Olivos-Ramirez  #
+#      gustavo.olivos@upch.pe     #
+#      Lima-Peru                  #
+###################################
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
+%matplotlib inline
 
 df = pd.read_csv('growth.csv')
 
-%matplotlib inline
-
-fig = plt.figure()
 x = df['dia']
 
 yc = df['tc']
@@ -30,7 +33,6 @@ xnew = np.linspace(x.min(), x.max(), 300)
 inter3 = interp1d(x, y3, kind='quadratic')
 y3_smooth = inter3(xnew)
 
-
 plt.plot(xnew, yc_smooth,label='HM')
 plt.scatter(x, yc,)
 plt.plot(xnew, y1_smooth, label='10 mL/L')
@@ -42,6 +44,6 @@ plt.scatter(x,y3)
 
 plt.xlabel('Days', fontsize=12)
 plt.ylabel('Population density (x10$^4$ cells/mL)', fontsize=12)
-
 plt.legend(fancybox=True, framealpha=0)
+
 plt.savefig('growth.png', dpi=800)
