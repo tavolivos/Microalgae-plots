@@ -1,0 +1,10 @@
+#install.packages("boot",dep=TRUE)
+sink(file = "output.txt")
+library(boot)
+data <- read.csv("all_data.csv")
+summary(data)
+bootPearson <- function(data,i)cor(data$Biomass[i],data$pH.initial[i],use="complete.obs",method = "pearson")
+boot_pearson <- boot(data, bootPearson, R=5000)
+boot_pearson
+boot.ci(boot_pearson,conf = 0.95)
+sink(file = NULL)
